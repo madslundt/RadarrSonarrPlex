@@ -1,0 +1,70 @@
+{
+  "name": "react-mobx",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --color",
+    "prod": "cross-env NODE_ENV=production webpack"
+  },
+  "author": "Mads Engel Lundt",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "mobx": "^3.1.9",
+    "mobx-react": "^4.1.8",
+    "mobx-react-devtools": "^4.2.13",
+    "postcss-smart-import": "^0.7.0",
+    "preact": "^8.1.0",
+    "preact-compat": "^3.16.0",
+    "precss": "^1.4.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-motion": "^0.5.0",
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
+    "styled-components": "^1.4.6"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.64",
+    "@types/node": "^7.0.18",
+    "@types/react": "^15.0.24",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-motion": "^0.0.21",
+    "@types/react-router-dom": "^4.0.4",
+    "@types/react-tap-event-plugin": "^0.0.30",
+    "autoprefixer": "^6.7.7",
+    "awesome-typescript-loader": "^3.1.3",
+    "classnames": "^2.2.5",
+    "colorguard": "^1.2.0",
+    "cross-env": "^5.0.0",
+    "css-loader": "^0.28.1",
+    "doiuse": "^3.0.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "node-sass": "^4.5.2",
+    "postcss-loader": "^1.3.3",
+    "postcss-unique-selectors": "^2.0.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "^1.3.1",
+    "sass": "^0.5.0",
+    "sass-loader": "^6.0.3",
+    "source-map-loader": "^0.2.1",
+    "style-loader": "^0.16.1",
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-config-suitcss": "^11.0.0",
+    "stylelint-webpack-plugin": "^0.7.0",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.3.2",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.0",
+    "write-file-webpack-plugin": "^4.0.2"
+  },
+  "-vs-binding": {
+    "ProjectOpened": [
+      "hot"
+    ]
+  }
+}
