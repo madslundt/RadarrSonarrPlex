@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Counter from '../features/counter/Counter';
+import Counter from '../components/counter/Counter';
 import {observable} from "mobx";
-import CounterStore from "../features/counter/CounterStore";
+import CounterStore from "../components/counter/CounterStore";
 import DevTools from 'mobx-react-devtools';
 import { random } from 'lodash'; // todo
 

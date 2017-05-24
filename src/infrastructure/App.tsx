@@ -1,13 +1,12 @@
-import Counter from '../pages/CounterPage';
+import * as React from 'react';
 import Routes from './Routes';
 import Header from './Header';
 import Footer from './Footer';
-import * as React from 'react';
 
 const App = () => (
     <div>
         <Header />
-        <Counter />
+        <Routes />
         <Footer />
     </div>
 );

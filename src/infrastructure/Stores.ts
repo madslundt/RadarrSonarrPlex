@@ -1,6 +1,6 @@
 
-import {FooterStore} from "./Footer";
+import {FooterStore, FOOTER_STORE} from "./Footer";
 
 export default {
-    footerStore: new FooterStore
+    [FOOTER_STORE]: new FooterStore
 };

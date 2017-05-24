@@ -1,18 +1,18 @@
 import * as React from 'react';
-import {Router, Route, Switch} from 'react-router';
-import createBrowserHistory from 'history/createBrowserHistory';
-import NotFoundPage from './404';
+import {BrowserRouter, Route} from 'react-router-dom';
+import NotFound from './404';
 import Counter from '../pages/CounterPage';
-
-const history = createBrowserHistory()
+import Profile from '../pages/ProfilePage';
+import Switch from './Switch';
 
 const Routes = () => (
-    <Router history={history}>
-        {/*<Switch>
+    <BrowserRouter>
+        <Switch>
             <Route exact path="/" component={Counter} />
-            <Route component={NotFoundPage}/>
-        </Switch>*/}
-    </Router>
+            <Route exact path="/profile/:id" component={Profile} />
+            <Route component={NotFound}/>
+        </Switch>
+    </BrowserRouter>
 );
 
 export default Routes;

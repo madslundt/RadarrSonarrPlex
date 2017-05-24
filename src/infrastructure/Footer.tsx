@@ -1,26 +1,28 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {useStrict, observable, action} from "mobx";
-import {inject, observer} from "mobx-react";
+import {useStrict, observable, action} from 'mobx';
+import {inject, observer} from 'mobx-react';
 
-const Container = styled.footer `
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    box-sizing: border-box;
-`;
+export const FOOTER_STORE = 'FOOTER_STORE';
 
-@inject('footerStore') @observer
-class Footer extends React.Component<any, void> {
+@inject(FOOTER_STORE) @observer
+class Footer extends React.Component<{}, void> {
     private footerStore: FooterStore;
 
-    constructor(props: { footerStore: FooterStore }) {
+    constructor(props: { FOOTER_STORE: FooterStore }) {
         super(props);
 
-        this.footerStore = props.footerStore;
+        this.footerStore = props[FOOTER_STORE];
     }
 
     render() {
+        const Container = styled.footer `
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            box-sizing: border-box;
+        `;
+
         return (
             <Container>
                 { this.footerStore.showText ? 'Footer' : '' }
@@ -35,10 +37,6 @@ export class FooterStore {
 
     get showText() {
         return this._showText;
-    }
-
-    set showText(showText) {
-        this._showText = showText;
     }
 
     @action

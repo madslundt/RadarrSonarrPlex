@@ -1,22 +1,29 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "noEmit": true,
+        "outDir": "dist",
         "module": "commonjs",
         "target": "es5",
+        "lib": ["es6", "dom"],
+        "sourceMap": true,
+        "allowJs": true,
+        "experimentalDecorators": true,
         "jsx": "react",
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
-        "sourceMap": true,
-        "experimentalDecorators": true,
-        "lib": [
-            "dom",
-            "es2015",
-            "es5",
-            "es6"
-        ]
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true
     },
-    "include": [
-        "src/**/*"
+    "exclude": [
+        "node_modules",
+        "scripts",
+        "webpack",
+        "src/setupTests.ts"
+    ],
+    "types": [
+        "typePatches"
     ]
 }

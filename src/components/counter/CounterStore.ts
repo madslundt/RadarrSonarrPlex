@@ -1,4 +1,4 @@
-import {useStrict, observable, action} from "mobx";
+import {useStrict, observable, action} from 'mobx';
 
 useStrict(true);
 export default class CounterStore {
