@@ -1,9 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {useStrict, observable, action} from 'mobx';
+import FooterStore, {FOOTER_STORE} from './FooterStore';
 import {inject, observer} from 'mobx-react';
-
-export const FOOTER_STORE = 'FOOTER_STORE';
 
 @inject(FOOTER_STORE) @observer
 class Footer extends React.Component<{}, void> {
@@ -28,20 +26,6 @@ class Footer extends React.Component<{}, void> {
                 { this.footerStore.showText ? 'Footer' : '' }
             </Container>
         );
-    }
-}
-
-useStrict(true);
-export class FooterStore {
-    @observable private _showText: boolean = true;
-
-    get showText() {
-        return this._showText;
-    }
-
-    @action
-    setShowText(showText: boolean) {
-        this._showText = showText;
     }
 }
 

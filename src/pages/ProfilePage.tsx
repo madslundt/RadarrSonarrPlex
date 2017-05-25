@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import NotFound from '../infrastructure/404';
+import NotFound from './NotFoundPage';
 import * as React from 'react';
 import {RouteComponentProps} from 'react-router-dom';
 import ProfileStore from '../components/profile/ProfileStore';

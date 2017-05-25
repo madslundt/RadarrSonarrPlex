@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import NotFound from './404';
+import NotFound from '../pages/NotFoundPage';
 import Counter from '../pages/CounterPage';
 import Profile from '../pages/ProfilePage';
 import Switch from './Switch';

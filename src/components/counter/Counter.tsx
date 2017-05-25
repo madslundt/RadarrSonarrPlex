@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {FooterStore, FOOTER_STORE} from '../../infrastructure/Footer';
+import FooterStore, {FOOTER_STORE} from '../footer/FooterStore';
 import { inject, observer } from "mobx-react";
 import CounterStore from "./CounterStore";
 
