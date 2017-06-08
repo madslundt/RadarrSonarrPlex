@@ -30,7 +30,7 @@ const Show = (props: IProps) => {
             <MediaInfo>
                 <p className="title episode-title"
                     title={show.title}>
-                        <span className="episode-number">{getAtleastTwoDigitNumber(show.episodeNumber)}x{getAtleastTwoDigitNumber(show.seasonNumber)}</span>
+                        <span className="episode-number">{getAtleastTwoDigitNumber(show.seasonNumber)}x{getAtleastTwoDigitNumber(show.episodeNumber)}</span>
                         {show.title}
                 </p>
                 <p className="title">{show.series.title}</p>
