@@ -6,10 +6,8 @@ const httpRegex = /https?:\/\//;
 Storage.load('options').then(options => {
     const inputs = {
         radarr_url: document.querySelector('#radarr_url'),
-        radarr_base: document.querySelector('#radarr_base'),
         radarr_key: document.querySelector('#radarr_key'),
         sonarr_url: document.querySelector('#sonarr_url'),
-        sonarr_base: document.querySelector('#sonarr_base'),
         sonarr_key: document.querySelector('#sonarr_key')
     };
 

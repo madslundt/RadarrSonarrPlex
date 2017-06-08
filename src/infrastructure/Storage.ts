@@ -2,12 +2,10 @@ declare const chrome: any;
 
 const options = {
     api: {
-        radarr_url: 'http://192.168.0.30:7878/api/',
-        radarr_base: '',
+        radarr_url: 'http://localhost:7878',
         radarr_key: '',
 
-        sonarr_url: 'http://192.168.0.30:8989/api/',
-        sonarr_base: '',
+        sonarr_url: 'http://localhost:8989',
         sonarr_key: ''
     },
     plexUrls: []

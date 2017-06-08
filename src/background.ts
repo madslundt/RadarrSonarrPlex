@@ -5,8 +5,13 @@ declare const chrome: any;
 chrome.tabs.onUpdated.addListener((tabId: string, changeInfo: any, tab: any) => {
     Storage.load('options').then(options => {
         const isInUserList = (url: string) => {
-            for(let u in options.plexUrls) {
-                if(url.indexOf(options.plexUrls[u]) > -1) {
+            if (!options || !options.plexUrls) {
+                return false;
+            }
+
+            url = url.toLowerCase();
+            for (let plexUrl of options.plexUrls) {
+                if (url.indexOf(plexUrl.toLowerCase()) !== -1) {
                     return true;
                 }
             }
@@ -15,7 +20,7 @@ chrome.tabs.onUpdated.addListener((tabId: string, changeInfo: any, tab: any) => 
         };
 
         if(changeInfo.status == 'complete' && isInUserList(tab.url)) {
-            chrome.tabs.executeScript(tabId, { file: 'main.js' });
+            chrome.tabs.executeScript(tabId, { file: 'index.js' });
         }
     });
 });
