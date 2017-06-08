@@ -89,5 +89,6 @@ chrome-user-data
 *.iml
 .vscode
 /chrome/*.html
-/chrome/*.js*
+/chrome/*.js
+/chrome/*.js.map
 yarn.lock
