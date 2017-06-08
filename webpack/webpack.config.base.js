@@ -1,14 +1,17 @@
 const path              = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const StyleLintPlugin   = require('stylelint-webpack-plugin');
 
 const config = {
-    entry: ["./src/index"],
+    entry: {
+        index: "./src/index",
+        options: "./src/options",
+        background: "./src/background"
+    },
     output: {
-        path: path.resolve("./dist"),
+        path: path.resolve("./chrome"),
         filename: "[name].js",
         sourceMapFilename: "[file].map",
-        publicPath: "/dist/"
+        publicPath: "/"
     },
     devtool: "source-map",
     resolve: {
@@ -24,43 +27,30 @@ const config = {
                 enforce: 'pre',
                 test: /\.tsx?$/,
                 use: ['source-map-loader']
-            }, {
-                test: /\.s?css$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader"
-                     }, {
-                        loader: "postcss-loader",
-                        options: {
-                            plugins: function() {
-                                return [
-                                    require('postcss-smart-import')({ /* ...options */ }),
-                                    require('autoprefixer')({ /* ...options */ }),
-                                    require('precss')({ /* ...options */ }),
-                                    require('doiuse')({ browsers:['ie >= 9', '> 1%'], }),
-                                    require('colorguard')({ /* ...options */ }),
-                                    require('postcss-unique-selectors')({ /* ...options */ }),
-                                    require("postcss-reporter")({ clearMessages: true })
-                                ];
-                            }
-                        }
-                    }, {
-                        loader: "sass-loader"
-                    }
-                ]
             }
         ]
     },
     plugins: [
-        new StyleLintPlugin({
-            configFile: './webpack/stylelint.config.js'
-        }),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./src/index.html",
+            inject: false,
+            minify: {
+                removeComments: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: "options.html",
+            template: "./src/options.html",
+            inject: false,
+            minify: {
+                removeComments: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: "background.html",
+            template: "./src/background.html",
+            inject: false,
             minify: {
                 removeComments: true
             }

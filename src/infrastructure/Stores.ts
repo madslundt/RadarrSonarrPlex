@@ -1,6 +1,5 @@
-
-import FooterStore, {FOOTER_STORE} from '../components/footer/FooterStore';
+import TopbarStore, { TOPBAR_STORE } from '../components/topbar/TopbarStore';
 
 export default {
-    [FOOTER_STORE]: new FooterStore()
+    [TOPBAR_STORE]: new TopbarStore()
 };

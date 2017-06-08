@@ -1,18 +1,14 @@
 import * as React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
-import NotFound from '../pages/NotFoundPage';
-import Counter from '../pages/CounterPage';
-import Profile from '../pages/ProfilePage';
+import {MemoryRouter, Route} from 'react-router-dom';
+import Home from '../pages/HomePage';
 import Switch from './Switch';
 
 const Routes = () => (
-    <BrowserRouter>
+    <MemoryRouter>
         <Switch>
-            <Route exact path="/" component={Counter} />
-            <Route exact path="/profile/:id" component={Profile} />
-            <Route component={NotFound}/>
+            <Route exact path="/" component={Home} />
         </Switch>
-    </BrowserRouter>
+    </MemoryRouter>
 );
 
 export default Routes;
