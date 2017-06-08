@@ -8,6 +8,7 @@
 - [ ]  Filter tv and movies
 - [ ]  Improve insert to navbar (sometimes fail)
 - [ ]  Make use of url base
+- [ ]  Improve movies sorting
 
 # For developer
 Use `npm start` to make webpack watch folder for changes.
