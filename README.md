@@ -1,4 +1,8 @@
-Implement
+![Chrome Web Store](chrome/img/icon1024.png)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/naofhcnmmeadbnonficeccmbfibchcmb.svg?style=flat-square)
+![Chrome Web Store](https://img.shields.io/chrome-web-store/rating-count/naofhcnmmeadbnonficeccmbfibchcmb.svg?style=flat-square)
+
+### [Download for Google Chrome](https://chrome.google.com/webstore/detail/naofhcnmmeadbnonficeccmbfibchcmb)
 
 # Todo
 - [ ]  Filter tv and movies
