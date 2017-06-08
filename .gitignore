@@ -88,6 +88,6 @@ chrome-user-data
 .idea
 *.iml
 .vscode
-/chrome/index.html
-/chrome/main.js
+/chrome/*.html
+/chrome/*.js*
 yarn.lock
