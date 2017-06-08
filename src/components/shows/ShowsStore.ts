@@ -1,10 +1,10 @@
 import {useStrict, observable, action, computed} from 'mobx';
 import ApiStatus from '../../infrastructure/api/apiStatus';
-// import { getShows } from './ShowsMockApi';
-import { getShows } from './ShowsApi';
 import {getStartDate, getEndDate} from "../topbar/TopbarStore";
 import * as moment from 'moment';
 import * as momentTZ from 'moment-timezone';
+import { getShows } from './ShowsApi';
+// import { getShows } from './ShowsMockApi';
 
 export const SHOWS_STORE = 'SHOWS_STORE';
 

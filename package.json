@@ -9,7 +9,6 @@
   "author": "Mads Engel Lundt",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.4",
     "mobx": "^3.1.10",
     "mobx-react": "^4.1.8",
     "mobx-react-devtools": "^4.2.13",
@@ -24,7 +23,6 @@
     "styled-components": "^2.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.64",
     "@types/moment-timezone": "^0.2.34",
     "@types/node": "^7.0.18",
     "@types/react": "^15.0.24",

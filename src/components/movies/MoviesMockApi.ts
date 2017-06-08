@@ -1,13 +1,12 @@
 import {IMovie} from './MoviesStore';
+import {IResponse} from './MoviesApi';
 import delay from '../../infrastructure/api/apiMockDelay';
 
 const moviesMockData: IMovie[] = require('./MoviesMockData.json');
 
-export const getMovies = (startDate: Date, endDate: Date): Promise <IMovie[]> => {
+export const getMovies = (startDate: Date, endDate: Date): Promise<IResponse> => {
     startDate.setUTCFullYear(0);
     endDate.setUTCFullYear(0);
-
-    // const start = startDate.toISOString(); const end   = endDate.toISOString();
 
     const result = moviesMockData.filter(movie => {
         const date = new Date(movie.inCinemas);
@@ -16,9 +15,13 @@ export const getMovies = (startDate: Date, endDate: Date): Promise <IMovie[]> =>
         return date >= startDate && date <= endDate;
     });
 
-    return new Promise<IMovie[]> (resolve => {
+    return new Promise<IResponse>(resolve => {
         setTimeout(() => {
-            resolve(result);
+            resolve({
+                response: result,
+                url: '',
+                key: ''
+            });
         }, delay);
     });
 }

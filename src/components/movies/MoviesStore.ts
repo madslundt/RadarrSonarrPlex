@@ -1,8 +1,8 @@
 import {useStrict, observable, action, computed} from 'mobx';
 import ApiStatus from '../../infrastructure/api/apiStatus';
-// import { getMovies } from './MoviesMockApi';
-import { getMovies } from './MoviesApi';
 import {getStartDate, getEndDate} from "../topbar/TopbarStore";
+import { getMovies } from './MoviesApi';
+// import { getMovies } from './MoviesMockApi';
 
 export const MOVIES_STORE = 'MOVIES_STORE';
 

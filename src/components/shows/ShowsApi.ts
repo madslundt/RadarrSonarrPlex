@@ -2,7 +2,14 @@ import {IShow} from './ShowsStore';
 
 declare const chrome: any;
 
-export const getShows = (startDate: Date, endDate: Date): Promise<{response: IShow[], url: string, key: string}> => {
+export interface IResponse {
+    response: IShow[];
+    url: string;
+    key: string;
+    error?: any;
+}
+
+export const getShows = (startDate: Date, endDate: Date): Promise<IResponse> => {
     const params = {
         start: startDate.toISOString(),
         end: endDate.toISOString()
@@ -10,11 +17,11 @@ export const getShows = (startDate: Date, endDate: Date): Promise<{response: ISh
 
     const endpoint = `calendar?start=${params.start}&end=${params.end}`;
 
-    return new Promise<{response: IShow[], url: string, key: string}>((resolve, reject) => {
+    return new Promise<IResponse>((resolve, reject) => {
         chrome.runtime.sendMessage({
             media: 'sonarr',
             endpoint: endpoint
-        }, (response: {response: IShow[], url: string, key: string, error?: any}) => {
+        }, (response: IResponse) => {
             if (!response.error) {
                 resolve(response);
             } else {
