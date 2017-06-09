@@ -17,6 +17,7 @@
 
 # Todo
 - [x]  Option to add different url for Plex
+- [ ]  Have the option to enable/disable Radarr or Sonarr
 - [ ]  Filter tv and movies (available, in plex, theaters, etc)
 - [ ]  Improve insert to navbar (sometimes fail)
 - [ ]  Improve movies sorting
