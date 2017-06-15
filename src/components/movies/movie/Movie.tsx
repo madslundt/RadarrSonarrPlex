@@ -1,18 +1,19 @@
 import * as React from 'react';
 import Poster from '../../poster/Poster';
 import { IMovie } from '../MoviesStore';
-import {MediaInfo} from '../../media/MediaStyles';
+import {MediaInfo, MediaElement} from '../../media/MediaStyles';
 import * as moment from 'moment';
 import * as momentTZ from 'moment-timezone';
 
 interface IProps {
     movie: IMovie;
+    isAvailable: boolean
 }
 
 const Movie = (props: IProps) => {
-    const { movie } = props;
+    const { movie, isAvailable } = props;
 
-    let content;
+    let content: string;
     if (hasBeenShown(movie.inCinemas)) {
         content = 'In theaters';
     } else {
@@ -20,9 +21,9 @@ const Movie = (props: IProps) => {
     }
 
     return (
-        <div>
+        <MediaElement>
             <Poster
-                isAvailable={false}
+                isAvailable={isAvailable}
                 status={movie.status}
                 images={movie.images}
                 downloaded={movie.downloaded}
@@ -33,9 +34,9 @@ const Movie = (props: IProps) => {
                     {movie.title}
                 </p>
             </MediaInfo>
-        </div>
+        </MediaElement>
     );
-};
+}
 
 const getHumanTime = (dateString: string) => {
     const date = moment(dateString);

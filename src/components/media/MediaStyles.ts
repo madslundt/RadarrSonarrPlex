@@ -25,8 +25,8 @@ export const MediaElement = styled.li`
     padding: 10px;
     box-sizing: border-box;
     flex-grow: 1;
-    min-width: 190px;
-    max-width: 190px
+    min-width: 200px;
+    max-width: 200px
 `;
 
 export const MediaInfo = styled.div`

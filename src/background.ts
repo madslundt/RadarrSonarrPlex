@@ -1,16 +1,16 @@
-import Storage from './infrastructure/Storage';
+import {getOptions} from './infrastructure/Storage';
 
 declare const chrome: any;
 
 chrome.tabs.onUpdated.addListener((tabId: string, changeInfo: any, tab: any) => {
-    Storage.load('options').then(options => {
+    getOptions().then(options => {
         const isInUserList = (url: string) => {
             if (!options || !options.plexUrls) {
                 return false;
             }
 
             url = url.toLowerCase();
-            for (let plexUrl of options.plexUrls) {
+            for (const plexUrl of options.plexUrls) {
                 if (url.indexOf(plexUrl.toLowerCase()) !== -1) {
                     return true;
                 }
@@ -32,7 +32,7 @@ chrome.runtime.onMessage.addListener((request: any, sender: any, sendResponse: a
 
 
 
-    Storage.load('options').then(options => {
+    getOptions().then(options => {
         let url: string = '';
         let key: string = '';
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {MemoryRouter, Route} from 'react-router-dom';
+import {MemoryRouter, Route, Switch} from 'react-router-dom';
 import Home from '../pages/HomePage';
-import Switch from './Switch';
 
 const Routes = () => (
     <MemoryRouter>

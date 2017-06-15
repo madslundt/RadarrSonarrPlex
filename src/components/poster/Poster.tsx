@@ -19,14 +19,13 @@ const Poster = (props: IProps) => {
         <PosterContainer style={{backgroundImage: `url('${imageUrl}')`}}>
             <Label
                 downloaded={props.downloaded}
-                available={props.isAvailable || props.status === 'released'}
+                available={props.isAvailable}
                 status={props.status}
                 color={label.color}
                 backgroundColor={label.backgroundColor}
             >
                 {label.content}
             </Label>
-
         </PosterContainer>
     );
 };
@@ -44,7 +43,7 @@ const getLabel = (props: IProps): ILabel => {
             content: 'In Plex'
         };
     }
-    if (props.isAvailable || props.status === 'released') {
+    if (props.isAvailable) {
         return {
             backgroundColor: '#D73939',
             color: '#fff',

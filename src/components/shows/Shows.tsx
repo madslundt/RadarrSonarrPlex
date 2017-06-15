@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
-import ShowsStore from "./ShowsStore";
+import ShowsStore, {IShow, isAvailable} from "./ShowsStore";
 import ApiStatus from '../../infrastructure/api/apiStatus';
 import Show from './show/Show';
 import TopbarStore, {TOPBAR_STORE} from "../topbar/TopbarStore";
-import {MediaList, MediaElement, Center, Error, Button} from '../media/MediaStyles';
+import {MediaList, Center, Error, Button} from '../media/MediaStyles';
 import {autorun} from "mobx";
+import {FilterStatus} from "../topbar/Filter";
 
 interface IProps {
     store: ShowsStore
@@ -35,6 +36,23 @@ class Shows extends React.Component<IProps, void> {
         });
     }
 
+    private _renderFilteredShows(shows: IShow[]) {
+        if (!shows || !shows.length) {
+            return <Center>No shows in current filter</Center>;
+        } else {
+            return (
+                <MediaList>
+                    {shows.map(show =>
+                        <Show
+                            key={show.id}
+                            show={show}
+                        />
+                    )}
+                </MediaList>
+            );
+        }
+    }
+
     private _renderRequest() {
         return <Center>Requesting...</Center>;
     }
@@ -44,15 +62,11 @@ class Shows extends React.Component<IProps, void> {
         if (!shows || !shows.length) {
             return <Center>No tv shows in {this.TopbarStore.currentMonth}</Center>;
         } else {
-            return (
-                <MediaList>
-                    {shows.map(show =>
-                        <MediaElement key={show.id}>
-                            <Show show={show} />
-                        </MediaElement>
-                    )}
-                </MediaList>
-            );
+            const filteredShows = shows
+                .filter(show => !!this.TopbarStore.filter
+                    .find(f => f.active && f.id === getFilterStatus(show))
+                );
+            return this._renderFilteredShows(filteredShows);
         }
     }
     private _renderError() {
@@ -77,6 +91,16 @@ class Shows extends React.Component<IProps, void> {
             default:
                 return this._renderError();
         };
+    }
+}
+
+export const getFilterStatus = (show: IShow) => {
+    if (show.hasFile) {
+        return FilterStatus.inPlex;
+    } else if (isAvailable(show.airDateUtc)) {
+        return FilterStatus.available;
+    } else {
+        return FilterStatus.coming;
     }
 }
 

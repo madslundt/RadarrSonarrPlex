@@ -4,7 +4,7 @@ import { Provider } from 'mobx-react';
 import App from './infrastructure/App';
 import Stores from './infrastructure/Stores';
 import insertIntoPlexNavbar, {NAVBAR_HREF} from './infrastructure/Navbar';
-import Storage from './infrastructure/Storage';
+import {getOptions} from './infrastructure/Storage';
 
 const contentId = 'content';
 
@@ -37,7 +37,7 @@ window.onhashchange = () => {
     renderPage();
 };
 
-Storage.load('options').then(() => {
+getOptions().then(() => {
     insertIntoPlexNavbar();
     renderPage();
 });

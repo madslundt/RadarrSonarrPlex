@@ -14,9 +14,39 @@
         input {
             width: 100%;
         }
+        h2 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px 0;
+        }
         h3 {
             margin-top: 0;
             font-weight: bold;
+        }
+        .container {
+            border: 1px solid;
+            margin: 10px 0;
+        }
+        .container.radarr {
+            border-color: rgb(255, 194, 48);
+            background-color: rgb(255, 194, 48);
+            color: rgb(5, 7, 8);
+        }
+        .container.sonarr {
+            border-color: rgb(54, 198, 244);
+            background-color: rgb(54, 198, 244);
+            color: rgb(5, 7, 8);
+        }
+        .container.plex {
+            border-color: #e5a00d;
+            background-color: #e5a00d;
+            color: #fff;
+        }
+        .group-container {
+            padding: 0 20px;
+            background-color: #fff;
+            color: #000;
         }
         .group {
             padding: 10px 0;
@@ -62,36 +92,70 @@
     </style>
 </head>
 <body>
-    <div class="group">
-        <h3>Radarr URL</h3>
-        <div class="option">
-            <input type="text" id="radarr_url" placeholder="The URL of your Radarr server">
+    <div class="container sonarr">
+        <h2>Sonarr</h2>
+        <div class="group-container">
+            <div class="group">
+                <div class="option">
+                    <input type="checkbox" id="sonarr_enabled">
+                    <label for="sonarr_enabled">Enabled</label>
+                </div>
+            </div>
+            <div class="input-details">
+                <div class="group">
+                    <h3>Sonarr URL</h3>
+                    <div class="option">
+                        <input type="text" id="sonarr_url" placeholder="URL of your Sonarr server">
+                    </div>
+                </div>
+                <div class="group">
+                    <h3>Sonarr API key</h3>
+                    <div class="option">
+                        <input type="text" id="sonarr_key" placeholder="Sonarr API key, found in Settings > General">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="group">
-        <h3>Radarr API key</h3>
-        <div class="option">
-            <input type="text" id="radarr_key" placeholder="Radarr API key, found in Settings > General">
+
+    <div class="container radarr">
+        <h2>Radarr</h2>
+        <div class="group-container">
+            <div class="group">
+                <div class="option">
+                    <input type="checkbox" id="radarr_enabled">
+                    <label for="radarr_enabled">Enabled</label>
+                </div>
+            </div>
+            <div class="input-details">
+                <div class="group">
+                    <h3>Radarr URL</h3>
+                    <div class="option">
+                        <input type="text" id="radarr_url" placeholder="URL of your Radarr server">
+                    </div>
+                </div>
+                <div class="group">
+                    <h3>Radarr API key</h3>
+                    <div class="option">
+                        <input type="text" id="radarr_key" placeholder="Radarr API key, found in Settings > General">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="group">
-        <h3>Sonarr URL</h3>
-        <div class="option">
-            <input type="text" id="sonarr_url" placeholder="The URL of your Sonarr server">
+
+    <div class="container plex">
+        <h2>Plex</h2>
+        <div class="group-container">
+            <div class="group">
+                <h3>Plex URLs</h3>
+                <p>Manage the URLs you use to access Plex (i.e. localhost:32400). The extension will always run on <code>app.plex.tv</code>.</p>
+                <ul id="plex-url-list"></ul>
+                <input type="text" id="new-plex-url" placeholder="http://"><button type="button" id="add-plex-url">+</button>
+            </div>
         </div>
     </div>
-    <div class="group">
-        <h3>Sonarr API key</h3>
-        <div class="option">
-            <input type="text" id="sonarr_key" placeholder="Sonarr API key, found in Settings > General">
-        </div>
-    </div>
-    <div class="group">
-        <h3>Plex URLs</h3>
-        <p>Manage the URLs you use to access Plex (i.e. localhost:32400). The extension will always run on <code>app.plex.tv</code>.</p>
-        <ul id="plex-url-list"></ul>
-        <input type="text" id="new-plex-url" placeholder="http://"><button type="button" id="add-plex-url">+</button>
-    </div>
+
     <div class="group">
         <button type="button" id="save">Save</button>
         <p id="status"></p>

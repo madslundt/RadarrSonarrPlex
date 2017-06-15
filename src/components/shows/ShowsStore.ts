@@ -4,7 +4,6 @@ import {getStartDate, getEndDate} from "../topbar/TopbarStore";
 import * as moment from 'moment';
 import * as momentTZ from 'moment-timezone';
 import { getShows } from './ShowsApi';
-// import { getShows } from './ShowsMockApi';
 
 export const SHOWS_STORE = 'SHOWS_STORE';
 
@@ -22,7 +21,7 @@ export default class ShowsStore {
 
     @computed
     get shows(): IShow[] {
-        return this._shows[this._monthOffset];
+        return this._shows[this._monthOffset] || [];
     }
     @computed
     get apiStatus() {

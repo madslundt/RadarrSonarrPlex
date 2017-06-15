@@ -94,3 +94,5 @@ chrome-user-data
 /chrome/*.js.map
 /chrome/*.zip
 yarn.lock
+
+web

@@ -1,9 +1,8 @@
 import {useStrict, observable, action, computed} from 'mobx';
 import ApiStatus from '../../infrastructure/api/apiStatus';
 import {getStartDate, getEndDate} from "../topbar/TopbarStore";
-import { getMovies } from './MoviesApi';
-// import { getMovies } from './MoviesMockApi';
-
+// import { getMovies } from './MoviesApi';
+import { getMovies } from './MoviesMockApi';
 export const MOVIES_STORE = 'MOVIES_STORE';
 
 useStrict(true);
@@ -20,7 +19,7 @@ export default class MoviesStore {
 
     @computed
     get movies(): IMovie[] {
-        return this._movies[this._monthOffset];
+        return this._movies[this._monthOffset] || [];
     }
     @computed
     get apiStatus() {

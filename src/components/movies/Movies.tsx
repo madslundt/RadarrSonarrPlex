@@ -3,9 +3,11 @@ import { inject, observer } from 'mobx-react';
 import MoviesStore from "./MoviesStore";
 import ApiStatus from '../../infrastructure/api/apiStatus';
 import Movie from './movie/Movie';
-import {MediaList, MediaElement, Center, Error, Button} from '../media/MediaStyles';
+import {MediaList, Center, Error, Button} from '../media/MediaStyles';
 import TopbarStore, {TOPBAR_STORE} from "../topbar/TopbarStore";
 import {autorun} from "mobx";
+import {IMovie} from './MoviesStore';
+import {FilterStatus} from "../topbar/Filter";
 
 interface IProps {
     store: MoviesStore
@@ -23,6 +25,8 @@ class Movies extends React.Component<IProps, void> {
 
         this.MoviesStore = props.store;
         this.TopbarStore = props[TOPBAR_STORE];
+
+        this._renderFilteredMovies = this._renderFilteredMovies.bind(this);
     }
 
     update() {
@@ -35,6 +39,24 @@ class Movies extends React.Component<IProps, void> {
         });
     }
 
+    private _renderFilteredMovies(movies: IMovie[]) {
+        if (!movies || !movies.length) {
+            return <Center>No movies in current filter</Center>;
+        } else {
+            return (
+                <MediaList>
+                    {movies.map(movie =>
+                        <Movie
+                            key={movie.id}
+                            movie={movie}
+                            isAvailable={isAvailable(movie)}
+                        />
+                    )}
+                </MediaList>
+            );
+        }
+    }
+
 
     private _renderRequest() {
         return <Center>Requesting...</Center>;
@@ -45,15 +67,11 @@ class Movies extends React.Component<IProps, void> {
         if (!movies || !movies.length) {
             return <Center>No movies in {this.TopbarStore.currentMonth}</Center>;
         } else {
-            return (
-                <MediaList>
-                    {movies.map(movie =>
-                        <MediaElement key={movie.id}>
-                            <Movie movie={movie} />
-                        </MediaElement>
-                    )}
-                </MediaList>
-            );
+            const filteredMovies = movies
+                .filter(movie => !!this.TopbarStore.filter
+                    .find(f => f.active && f.id === getFilterStatus(movie))
+                );
+            return this._renderFilteredMovies(filteredMovies);
         }
     }
     private _renderError() {
@@ -80,5 +98,17 @@ class Movies extends React.Component<IProps, void> {
         };
     }
 }
+
+export const getFilterStatus = (movie: IMovie) => {
+    if (movie.downloaded) {
+        return FilterStatus.inPlex;
+    } else if (isAvailable(movie)) {
+        return FilterStatus.available;
+    } else {
+        return FilterStatus.coming;
+    }
+}
+
+export const isAvailable = (movie: IMovie) => movie.status === 'released';
 
 export default Movies;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Poster from '../../poster/Poster';
 import {IShow, isAvailable} from '../ShowsStore';
-import {MediaInfo} from '../../media/MediaStyles';
+import {MediaInfo, MediaElement} from '../../media/MediaStyles';
 import * as moment from 'moment';
 import * as momentTZ from 'moment-timezone';
 
@@ -19,7 +19,7 @@ const Show = (props: IProps) => {
     }
 
     return (
-        <div>
+        <MediaElement>
             <Poster
                 isAvailable={available}
                 status={show.series.status}
@@ -35,7 +35,7 @@ const Show = (props: IProps) => {
                 </p>
                 <p className="title">{show.series.title}</p>
             </MediaInfo>
-        </div>
+        </MediaElement>
     );
 };
 
