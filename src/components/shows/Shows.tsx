@@ -13,7 +13,7 @@ interface IProps {
 }
 
 @inject(TOPBAR_STORE) @observer
-class Shows extends React.Component<IProps, void> {
+class Shows extends React.Component<IProps, {}> {
     private ShowsStore: ShowsStore;
     private TopbarStore: TopbarStore;
 

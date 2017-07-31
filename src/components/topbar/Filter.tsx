@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 
 @inject(TOPBAR_STORE) @observer
-class Filter extends React.Component<{}, void> {
+class Filter extends React.Component<{}, {}> {
     private TopbarStore: TopbarStore;
 
     constructor(props: { TOPBAR_STORE: TopbarStore }) {

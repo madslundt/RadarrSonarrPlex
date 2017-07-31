@@ -5,7 +5,7 @@ import {Button} from "../media/MediaStyles";
 import styled from 'styled-components';
 
 @inject(TOPBAR_STORE) @observer
-class Topbar extends React.Component<{}, void> {
+class Topbar extends React.Component<{}, {}> {
     private TopbarStore: TopbarStore;
 
     constructor(props: { TOPBAR_STORE: TopbarStore }) {
