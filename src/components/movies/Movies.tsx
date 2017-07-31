@@ -39,9 +39,9 @@ class Movies extends React.Component<IProps, {}> {
         });
     }
 
-    private _renderFilteredMovies(movies: IMovie[]) {
+    private _renderFilteredMovies(movies: IMovie[], totalMoviesCounter: number) {
         if (!movies || !movies.length) {
-            return <Center>No movies in current filter</Center>;
+            return <Center>{totalMoviesCounter} {totalMoviesCounter !== 1 ? 'movies' : 'movie'} hidden</Center>;
         } else {
             return (
                 <MediaList>
@@ -71,7 +71,7 @@ class Movies extends React.Component<IProps, {}> {
                 .filter(movie => !!this.TopbarStore.filter
                     .find(f => f.active && f.id === getFilterStatus(movie))
                 );
-            return this._renderFilteredMovies(filteredMovies);
+            return this._renderFilteredMovies(filteredMovies, movies.length);
         }
     }
     private _renderError() {

@@ -60,6 +60,19 @@ export default class MoviesStore {
 
         return result;
     }
+
+    @computed
+    get currentYear(): string {
+        const now = new Date();
+        const currentMonth = now.getMonth() + this._monthOffset;
+
+        const date = new Date();
+        date.setMonth(currentMonth);
+
+        const result = date.toLocaleString(navigator.language, { year: "numeric" });
+
+        return result;
+    }
 }
 
 export const getStartDate = (monthOffset: number): Date => {

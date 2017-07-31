@@ -57,8 +57,6 @@ const FilterContainer = styled.ul`
 const FilterElement = styled.li`
     padding: 10px;
     display: inline-block;
-
-    &
 `;
 
 const Label = styled.label`

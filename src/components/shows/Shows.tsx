@@ -36,9 +36,9 @@ class Shows extends React.Component<IProps, {}> {
         });
     }
 
-    private _renderFilteredShows(shows: IShow[]) {
+    private _renderFilteredShows(shows: IShow[], totalShowsCounter: number) {
         if (!shows || !shows.length) {
-            return <Center>No shows in current filter</Center>;
+            return <Center>{totalShowsCounter} {totalShowsCounter !== 1 ? 'shows' : 'show'} hidden</Center>;
         } else {
             return (
                 <MediaList>
@@ -66,7 +66,7 @@ class Shows extends React.Component<IProps, {}> {
                 .filter(show => !!this.TopbarStore.filter
                     .find(f => f.active && f.id === getFilterStatus(show))
                 );
-            return this._renderFilteredShows(filteredShows);
+            return this._renderFilteredShows(filteredShows, shows.length);
         }
     }
     private _renderError() {

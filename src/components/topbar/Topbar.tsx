@@ -28,7 +28,10 @@ class Topbar extends React.Component<{}, {}> {
         return (
             <Nav>
                 <Button className="btn btn-sm btn-default" onClick={this.previousMonth}>Previous month</Button>
-                <Month>{this.TopbarStore.currentMonth}</Month>
+                <div>
+                    <Month>{this.TopbarStore.currentMonth}</Month>
+                    <Year>{this.TopbarStore.currentYear}</Year>
+                </div>
                 <Button className="btn btn-sm btn-default" onClick={this.nextMonth}>Next month</Button>
             </Nav>
         );
@@ -43,6 +46,13 @@ const Month = styled.div`
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 26px;
+    text-align: center;
+`;
+const Year = styled.div`
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 14px;
+    text-align: center;
 `;
 
 
