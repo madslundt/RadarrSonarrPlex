@@ -35,3 +35,5 @@
 Use `npm start` to make webpack watch folder for changes.
 
 Run `npm run prod` to make it production ready.
+
+Run `npm run web` to make use of webpack dev server and run it like a normal webpage. This makes use of mock api
